@@ -3,6 +3,14 @@
     <style name="Base.Theme.InticiviApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Force status bar color -->
+        <item name="android:statusBarColor">@color/blue</item>
+
+        <!-- Make icons white -->
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Disable edge-to-edge -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
     </style>
 

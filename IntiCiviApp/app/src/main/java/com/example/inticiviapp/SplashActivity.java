@@ -23,7 +23,6 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(intent);
             //Add animation HERE
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-
             finish();
         }, SPLASH_TIME);
     }
