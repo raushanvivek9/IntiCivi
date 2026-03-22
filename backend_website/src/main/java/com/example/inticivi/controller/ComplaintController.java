@@ -7,9 +7,11 @@ import com.example.inticivi.service.ComplaintService;
 import com.example.inticivi.service.JwtService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,7 +74,7 @@ public class ComplaintController {
             List<Complaint> complaints = complaintService.getAllComplaints();
             return ResponseEntity.ok(complaints);
         }
-        return ResponseEntity.forbidden().build();
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Collections.emptyList());
     }
 
     // Admin update status
@@ -88,6 +90,6 @@ public class ComplaintController {
                 return ResponseEntity.ok(updated);
             }
         }
-        return ResponseEntity.forbidden().build();
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 }
