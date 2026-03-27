@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    android:layout_columnWeight="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Icon -->
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#F5E6D3"
+            android:padding="8dp"
+            android:src="@drawable/complain"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register Complaint"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#1A1A1A"/>
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Report a civic issue in your area"
+            android:textSize="13sp"
+            android:textColor="#6B7280"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Open -->
+        <TextView
+            android:id="@+id/open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open →"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#F59E0B"
+            android:layout_marginTop="12dp"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

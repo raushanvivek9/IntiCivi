@@ -1,14 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
     tools:context=".Fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- IMAGE SLIDER -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Overlay -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Gradient Overlay -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/slider_overlay"/>
+
+            <!-- Center Content -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Emblem -->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_emblem"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Title -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="National Civic"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:text=" Issue Portal"
+                    android:textColor="#FFA726"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+                </LinearLayout>
+
+
+                <!-- Subtitle -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GOVERNMENT OF INDIA • ANDHRA PRADESH"
+                    android:textColor="#DDFFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginTop="4dp"/>
+
+                <!-- Small color bar -->
+                <LinearLayout
+                    android:layout_width="80dp"
+                    android:layout_height="4dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#FF9933"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#138808"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- DOTS INDICATOR -->
+        <LinearLayout
+            android:id="@+id/dotsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"/>
+
+    </RelativeLayout>
+
+    <!-- Citizen Services -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Citizen Services"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="12dp"/>
+
+    <!--Action Cards -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <!-- Report -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:background="#FFA726"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="4dp">
+
+            <TextView
+                android:text="Report Issue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- Track -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:background="#9E9E9E"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="4dp">
+
+            <TextView
+                android:text="Track Status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- Location -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:background="#757575"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="4dp">
+
+            <TextView
+                android:text="Set Location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Services -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Services"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="8dp"/>
+
+    <!-- Services Grid -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false"
+        android:foreground="?attr/selectableItemBackground"
+        android:useDefaultMargins="true">
+
+        <!-- Card 1 -->
+
+        <include layout="@layout/item_service_register_complain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:id="@+id/report_civic_issue"/>
+
+        <!-- Card 2 -->
+        <include layout="@layout/item_service_track_complaint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"/>
+
+        <!-- Card 3 -->
+        <include layout="@layout/item_service_my_complain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"/>
+
+        <!-- Card 4 -->
+        <include layout="@layout/item_service_help"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"/>
+
+    </GridLayout>
+
+</LinearLayout>
+
+</ScrollView>
