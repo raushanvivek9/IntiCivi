@@ -7,6 +7,7 @@ import MainLayout from "../layouts/MainLayout"
 import RegisterComplaint from "../pages/RegisterComplaint";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import TrackIssue from "../pages/TrackIssue";
 
 function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/report" element={<RegisterComplaint />} />
+      <Route path="/trackissue"        element={<TrackIssue />} />
     </Routes>
   )
 }

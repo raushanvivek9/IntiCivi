@@ -1,20 +1,17 @@
-import { Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
-import TopStrip from "../components/TopStrip"
-import Header from "../components/Header"
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
-
-function MainLayout() {
+export default function MainLayout() {
   return (
-    <>
-      <TopStrip />
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh", background: "#faf8f3" }}>
       <Header />
       <Navbar />
-      <Outlet />
+      <main style={{ flex: 1 }}>
+        <Outlet />
+      </main>
       <Footer />
-    </>
-  )
+    </div>
+  );
 }
-
-export default MainLayout
