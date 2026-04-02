@@ -74,7 +74,7 @@ public class HomeFragment extends Fragment {
             }
         };
         handler.post(runnable);
-        // Animation Slider
+        // ==================Animation Slider==========================
         viewPager.setPageTransformer((page, position) -> page.setAlpha(0.5f + (1 - Math.abs(position))));
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -89,7 +89,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //for Offical Notice Board
+        //=============for Offical Notice Board=========================
         RecyclerView noticerecyclerView = homeView.findViewById(R.id.noticeRecycler);
         noticerecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -181,7 +181,16 @@ public class HomeFragment extends Fragment {
         ((TextView) deptCard.findViewById(R.id.value)).setText("25");
         ((TextView) deptCard.findViewById(R.id.title)).setText("Departments");
 
-        report.setOnClickListener(v -> Toast.makeText(getContext(), "Report Clicked", Toast.LENGTH_SHORT).show());
+        //==============Report complain============================
+        report.setOnClickListener(v -> {
+            ReportFragment fragment = new ReportFragment();
+
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .addToBackStack(null) //
+                    .commit();
+        });
 
         return homeView;
     }
