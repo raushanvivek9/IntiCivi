@@ -1,7 +1,9 @@
 package com.example.inticiviapp.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +22,8 @@ import android.widget.Toast;
 import com.example.inticiviapp.Adapter.NoticeAdapter;
 import com.example.inticiviapp.Adapter.ResourceAdapter;
 import com.example.inticiviapp.Adapter.SliderAdapter;
+import com.example.inticiviapp.Authentication.SessionManager;
+import com.example.inticiviapp.LoginActivity;
 import com.example.inticiviapp.Model.Notice;
 import com.example.inticiviapp.Model.Resource;
 import com.example.inticiviapp.R;
@@ -183,13 +187,21 @@ public class HomeFragment extends Fragment {
 
         //==============Report complain============================
         report.setOnClickListener(v -> {
-            ReportFragment fragment = new ReportFragment();
+            SessionManager session = new SessionManager(getContext());
 
-            requireActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .addToBackStack(null) //
-                    .commit();
+            if (!session.isLoggedIn()) {
+                showLoginDialog(); // popup
+
+            } else {
+                //Only open the report fragment if logged in
+                ReportFragment fragment = new ReportFragment();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, fragment)
+                        .addToBackStack(null)
+                        .commit();
+
+            }
         });
 
         return homeView;
@@ -212,6 +224,25 @@ public class HomeFragment extends Fragment {
         }
 
         dots[0].setImageResource(R.drawable.dot_active);
+    }
+    private void showLoginDialog() {
+
+        new AlertDialog.Builder(getContext())
+                .setTitle("Login Required")
+                .setMessage("Please login first to register a complaint.")
+                .setCancelable(false)
+
+                .setPositiveButton("Login", (dialog, which) -> {
+
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    intent.putExtra("openReport", true); // 🔥 important
+                    startActivity(intent);
+
+                })
+
+                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
+
+                .show();
     }
 }
 

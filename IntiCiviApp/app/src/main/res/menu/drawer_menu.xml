@@ -1,17 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Main Section -->
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_home" android:title="Home"/>
-        <item android:id="@+id/nav_report" android:title="Report Issue"/>
-        <item android:id="@+id/nav_track" android:title="Track Complaint"/>
-        <item android:id="@+id/nav_my" android:title="My Complaints"/>
+
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"
+            android:icon="@drawable/ic_home"/>
+
+        <item
+            android:id="@+id/nav_report"
+            android:title="Report Issue"
+            android:icon="@drawable/ic_report_24"/>
+
+        <item
+            android:id="@+id/nav_track"
+            android:title="Track Complaint"
+            android:icon="@drawable/ic_search_24"/>
+
+        <item
+            android:id="@+id/nav_my"
+            android:title="My Complaints"
+            android:icon="@drawable/ic_my_complain"/>
+
     </group>
 
+    <!-- Support Section -->
+    <group>
     <item android:title="Support">
         <menu>
-            <item android:id="@+id/nav_help" android:title="Help &amp; Support"/>
+            <item
+                android:id="@+id/nav_help"
+                android:title="Help &amp; Support"
+                android:icon="@drawable/ic_support_agent"/>
         </menu>
     </item>
+    </group>
+
+
+    <!-- Auth Section -->
+    <group>
+        <item android:title="User Account">
+            <menu>
+                <item
+                    android:id="@+id/nav_Profile"
+                    android:title="Profile"
+                    android:icon="@drawable/ic_user"/>
+            </menu>
+        </item>
+    </group>
 
 </menu>
