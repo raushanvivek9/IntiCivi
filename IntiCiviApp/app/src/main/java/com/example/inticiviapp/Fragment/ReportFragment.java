@@ -1,12 +1,15 @@
 package com.example.inticiviapp.Fragment;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -14,7 +17,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.example.inticiviapp.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -37,6 +44,11 @@ public class ReportFragment extends Fragment {
     // UI fields
     MaterialAutoCompleteTextView dropdownState;
     TextInputEditText etCity, etPin, etAddress;
+    private static final int PICK_MEDIA = 101;
+
+    MaterialButton btnUpload;
+    LinearLayout layoutFileAck;
+    TextView tvFileName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -97,8 +109,28 @@ public class ReportFragment extends Fragment {
 
         btnLocation.setOnClickListener(v -> getCurrentLocation());
 
+        //=======================for upload evidence===================================
+        btnUpload = ReportView.findViewById(R.id.btnUpload);
+        layoutFileAck = ReportView.findViewById(R.id.layoutFileAck);
+        tvFileName = ReportView.findViewById(R.id.tvFileName);
+
+        // Button click
+        btnUpload.setOnClickListener(v -> openMediaPicker());
+
 
         return ReportView;
+    }
+
+    private void openMediaPicker() {
+
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");
+
+        // Allow only image + video
+        String[] mimeTypes = {"image/*", "video/*"};
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+
+        startActivityForResult(Intent.createChooser(intent, "Select Image or Video"), PICK_MEDIA);
     }
 
 
@@ -161,6 +193,38 @@ public class ReportFragment extends Fragment {
                 grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
             getCurrentLocation();
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_MEDIA && resultCode == getActivity().RESULT_OK && data != null) {
+
+            Uri fileUri = data.getData();
+
+            if (fileUri != null) {
+
+                String fileType = requireContext().getContentResolver().getType(fileUri);
+
+                //Allow only image/video
+                if (fileType != null &&
+                        (fileType.startsWith("image/") || fileType.startsWith("video/"))) {
+
+                    //Show acknowledgement
+                    layoutFileAck.setVisibility(View.VISIBLE);
+
+                    // Extract simple file name
+                    String fileName = fileUri.getLastPathSegment();
+
+                    tvFileName.setText("Uploaded: " + fileName);
+
+                    Toast.makeText(getContext(), "File uploaded successfully", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(getContext(), "Only image or video allowed", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 }

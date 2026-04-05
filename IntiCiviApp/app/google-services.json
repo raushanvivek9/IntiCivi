@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "436838367346",
+    "project_id": "inticivi-7dc91",
+    "storage_bucket": "inticivi-7dc91.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436838367346:android:1a33ba904fb18c1efb42eb",
+        "android_client_info": {
+          "package_name": "com.example.inticiviapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436838367346-jvt57vjuo0omahon2kcrctjrkhhta3bf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.inticiviapp",
+            "certificate_hash": "268b98fa4c69f9bbc1fe7420bbe67fe3acc29c24"
+          }
+        },
+        {
+          "client_id": "436838367346-s36p2n4p92ndqu9q80j8qv3rkfhi2vsc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWQoJ2ho2Y0zYm2qYldFH0CHZs8E5gCA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436838367346-s36p2n4p92ndqu9q80j8qv3rkfhi2vsc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
